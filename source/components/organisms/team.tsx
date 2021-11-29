@@ -6,34 +6,31 @@ import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@chakra-ui/tabs';
 
 import Tasks from '@/components/organisms/tasks';
 import Chat from '@/components/organisms/chat';
+import Members from './members';
 
-interface TeamProps {}
+interface TeamProps {
+	teamId: string;
+	name: string;
+	description: string;
+}
 
-const Team: FC<TeamProps> = ({}: TeamProps) => {
+const Team: FC<TeamProps> = ({ name, description, teamId }: TeamProps) => {
 	return (
 		<Flex p='4' flex='0' direction='column' h='full'>
 			<Heading fontSize='2xl' mb='4'>
-				Cryptocrikosos
+				{name}
 			</Heading>
 			<Tabs variant='soft-rounded' flex='1' h='full' display='flex' flexDirection='column'>
 				<TabList mb='4'>
 					<Tab>Tasks</Tab>
 					<Tab>Chat</Tab>
-					<Tab>Schedule</Tab>
-					<Tab>Participants</Tab>
 				</TabList>
 				<TabPanels display='flex' flexDirection='column' boxSizing='border-box'>
 					<TabPanel p='0' display='flex' flexDirection='column'>
-						<Tasks />
-					</TabPanel>
-					<TabPanel p='0' display='flex' flexDirection='column'>
-						<Chat />
+						<Tasks teamId={teamId} />
 					</TabPanel>
 					<TabPanel p='0'>
-						<Heading fontSize='xl'>Schedule</Heading>
-					</TabPanel>
-					<TabPanel p='0'>
-						<Heading fontSize='xl'>Participants</Heading>
+						<Members teamId={teamId} />
 					</TabPanel>
 				</TabPanels>
 			</Tabs>

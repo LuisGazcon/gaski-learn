@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import type { FC } from 'react';
-import { Flex, Heading, Button } from '@chakra-ui/react';
-import { Box, Divider, Grid, Link, StackDivider, Text } from '@chakra-ui/layout';
-import { Input } from '@chakra-ui/input';
+import { Flex, Heading, Button, Icon } from '@chakra-ui/react';
+import { Divider, Text } from '@chakra-ui/layout';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 import { useActions } from '@core/common/hooks';
 
@@ -15,7 +16,52 @@ const LoginForm: FC<LoginFormProps> = ({}: LoginFormProps) => {
 	const authActions = useActions<AuthActions>(authModule);
 
 	return (
-		<Flex
+		<Flex w='xl' rounded='lg' overflow='hidden' shadow='lg' direction={['column', 'column', 'row']}>
+			<Flex bg='gray.600' w='full' direction='column' p='4'>
+				<Heading fontSize='2xl'>Welcome!</Heading>
+				<Divider my='4' />
+				<Text>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum, similique!</Text>
+			</Flex>
+			<Flex bg='gray.700' w='full' direction='column' p='4'>
+				<Heading fontSize='2xl'>Sign in</Heading>
+				<Divider my='4' />
+				<Flex direction='column' gridGap='4'>
+					<Button
+						justifyContent='flex-start'
+						leftIcon={<Icon as={FontAwesomeIcon} icon={faFacebook} />}
+						colorScheme='facebook'
+						onClick={() => authActions.signIn('facebook')}
+					>
+						Facebook
+					</Button>
+					<Button
+						justifyContent='flex-start'
+						leftIcon={<Icon as={FontAwesomeIcon} icon={faGoogle} />}
+						colorScheme='red'
+						onClick={() => authActions.signIn('google')}
+					>
+						Google
+					</Button>
+					<Button
+						justifyContent='flex-start'
+						leftIcon={<Icon as={FontAwesomeIcon} icon={faGithub} />}
+						colorScheme='purple'
+						onClick={() => authActions.signIn('github')}
+					>
+						GitHub
+					</Button>
+				</Flex>
+				<Divider my='4' />
+				<Text fontSize='small' color='gray.500'>
+					Read our privacy policy
+				</Text>
+			</Flex>
+		</Flex>
+	);
+};
+
+export default LoginForm;
+/* <Flex
 			p='4'
 			flexDirection='column'
 			width={{ lg: '96' }}
@@ -45,8 +91,4 @@ const LoginForm: FC<LoginFormProps> = ({}: LoginFormProps) => {
 			<Text fontSize='small' color='gray.500'>
 				¿No tienes una cuenta?, <Link color='primary'>crea una aquí</Link>
 			</Text>
-		</Flex>
-	);
-};
-
-export default LoginForm;
+		</Flex> */

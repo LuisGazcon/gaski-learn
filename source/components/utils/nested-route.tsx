@@ -4,9 +4,7 @@ import { Route, useRouteMatch } from 'react-router-dom';
 import type { FC, ReactElement } from 'react';
 import type { RouteProps } from 'react-router-dom';
 
-interface NestedRouteProps {
-	fallback?: ReactElement;
-}
+interface NestedRouteProps {}
 const NestedRoute: FC<NestedRouteProps & RouteProps> = ({ path, ...props }) => {
 	const match = useRouteMatch();
 

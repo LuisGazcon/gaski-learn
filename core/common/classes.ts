@@ -6,3 +6,5 @@ export class Actions {
 		this.dispatch = dispatch;
 	};
 }
+
+export class Selectors {}

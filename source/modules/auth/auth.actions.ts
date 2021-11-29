@@ -38,5 +38,11 @@ export class AuthActions extends Actions {
 
 	public signOut() {
 		this.dispatch({ type: AuthActionsTypes.SIGN_OUT });
+		this.authService.signOut().catch((error) => {
+			this.dispatch({
+				type: AuthActionsTypes.SIGN_OUT_FAILURE,
+				payload: { error },
+			});
+		});
 	}
 }

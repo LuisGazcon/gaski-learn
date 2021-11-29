@@ -7,7 +7,6 @@ import { actionsFactory } from '@core/factory/actions';
 import { selectorsFactory } from '@core/factory/selectors';
 import { providersFactory } from '@core/factory/providers';
 import type { InjectProvidersArguments, ModuleFactoryArguments } from '@core/types/arguments';
-import { Component } from 'react';
 
 export function injectProviders<Actions>(args: InjectProvidersArguments<Actions>): Actions {
 	const { constructor, instance, providers } = args;

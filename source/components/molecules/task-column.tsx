@@ -11,17 +11,16 @@ interface TaskColumnProps {
 
 const TaskColumn: FC<TaskColumnProps & FlexProps> = ({ children, heading, ...props }) => {
 	return (
-		<Flex direction='column' gridGap='4' w='100%' {...props}>
+		<Flex
+			direction='column'
+			gridGap='4'
+			w='100%'
+			flex={1}
+			{...props}
+			style={{ scrollSnapAlign: 'center' }}
+		>
 			<Heading fontSize='xl'>{heading}</Heading>
-			<Flex
-				direction='column'
-				gridGap='4'
-				p='4'
-				bg='gray.700'
-				border='1px'
-				borderColor='gray.500'
-				rounded='base'
-			>
+			<Flex direction='column' gridGap='4' p='4' bg='gray.700' rounded='lg' shadow='lg'>
 				{children}
 			</Flex>
 		</Flex>

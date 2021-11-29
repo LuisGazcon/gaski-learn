@@ -5,6 +5,7 @@ import {
 	FacebookAuthProvider,
 	GoogleAuthProvider,
 	GithubAuthProvider,
+	Unsubscribe,
 } from 'firebase/auth';
 import type { Auth, User } from 'firebase/auth';
 
@@ -33,7 +34,7 @@ export class AuthService {
 		return await this.auth.signOut();
 	}
 
-	public onAuthStateChanged(callback): void {
+	public onAuthStateChanged(callback): Unsubscribe {
 		return this.auth.onAuthStateChanged(callback);
 	}
 }
